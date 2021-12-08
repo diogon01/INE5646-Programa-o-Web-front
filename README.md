@@ -1,4 +1,4 @@
-# SgebNewFront
+# SCVANT: Sistema de Controle de veículo aéreo não tripulado
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
 
