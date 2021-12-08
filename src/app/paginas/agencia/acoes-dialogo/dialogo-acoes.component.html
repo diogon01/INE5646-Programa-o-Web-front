@@ -1,0 +1,105 @@
+<!--<mat-card-subtitle>
+
+</mat-card-subtitle>-->
+<div *ngIf="excluir">
+  <h2 mat-dialog-title>
+    {{'Excluir Agencia: ' + data.agencia.sgl_agencia}}
+  </h2>
+  <mat-divider></mat-divider>
+  <mat-dialog-content>
+    <p>Você tem ceteza que deseja excluir a agência: {{data.agencia.no_agencia}}?</p>
+    <p>Uma vez excluido, os dados poderão não ser recuperados</p>
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button
+            color="primary"
+            mat-dialog-close>
+      Cancelar
+    </button>
+
+    <button mat-raised-button
+            color="warn"
+            [mat-dialog-close]="true">
+      <mat-icon>delete</mat-icon>
+      Excluir
+    </button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="visualizar">
+  <h2 mat-dialog-title>Visualizar Agência: {{data.agencia.no_agencia}}</h2>
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="mat-typography">
+    <div class="main" fxLayout="row" fxLayout.xs="column" fxFlex>
+      <div fxFlex="60%" fxFlexOrder.xs="2" style="padding-top: 10px">
+        <p><span>Nome da agência:</span> {{data.agencia.no_agencia}}</p>
+        <p><span>Sigla da agência:</span> {{data.agencia.sgl_agencia}}</p>
+        <p><span>CNPJ:</span> {{data.agencia.nu_cnpj}}</p>
+        <p><span>E-mail:</span> {{data.agencia.dsc_email}}</p>
+        <p><span>Telefone:</span> {{data.agencia.nu_telefone}}</p>
+        <p><span>Esfera da Agência:</span> {{data.agencia.agencia_esfera.dsc_esfera_agencia}}</p>
+        <p><span>UF:</span> {{data.agencia.uf.dsc_uf}}</p>
+        <p><span>País:</span> {{data.agencia.pais.no_pais}}</p>
+        <p><span>Outras informações:</span> {{data.agencia.dsc_informacao}}</p>
+
+      </div>
+      <div fxFlex="40%" fxFlexOrder.xs="1">
+        <div style="margin-top: 20px">
+          <img mat-card-image
+               src="https://media.extraguarapuava.com.br/2021/08/403bf7bc-prf-768x445.jpeg"
+               alt="Photo of a Shiba Inu">
+        </div>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button
+            color="primary"
+            mat-dialog-close>
+      Voltar
+    </button>
+    <button mat-raised-button
+            color="edit"
+            [mat-dialog-close]="false"
+            (click)="editar(data.agencia.cd_agencia)">
+      <mat-icon>edit</mat-icon>
+      Editar
+    </button>
+  </mat-dialog-actions>
+
+
+</div>
+
+
+<!--<h2 mat-dialog-title>Visualizar Agência: {{data.agencia.no_agencia}}</h2>
+<mat-divider></mat-divider>
+<p><span>*Nome da agência:</span> {{data.agencia.no_agencia}}</p>
+<p><span>Sigla da agência:</span> {{data.agencia.sgl_agencia}}</p>
+<p><span>CNPJ:</span> {{data.agencia.nu_cnpj}}</p>
+<p><span>E-mail:</span> {{data.agencia.dsc_email}}</p>
+<p><span>Telefone:</span> {{data.agencia.nu_telefone}}</p>
+<p><span>Esfera da Agência:</span> {{data.agencia.agencia_esfera.dsc_esfera_agencia}}</p>
+<p><span>UF:</span> {{data.agencia.uf.sigla}}</p>
+<p><span>País:</span> {{data.agencia.pais.no_pais}}</p>
+<p><span>Outras informações:</span> {{data.agencia.dsc_informacao}}</p>
+<img mat-card-image
+     src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+     alt="Photo of a Shiba Inu">
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-raised-button
+          color="primary"
+          mat-dialog-close>
+    Cancelar
+  </button>
+  <button mat-raised-button
+          color="warn"
+          [mat-dialog-close]="true">
+    <mat-icon>delete</mat-icon>
+    Excluir
+  </button>
+</mat-dialog-actions>
+</div>-->

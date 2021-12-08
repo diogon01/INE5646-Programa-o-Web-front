@@ -1,0 +1,92 @@
+<mat-toolbar color="primary">
+  <span>
+        SCVANT: Sistema de Controle de veículo aéreo não tripulado
+  </span>
+</mat-toolbar>
+<div class="containerX">
+  <div fxLayout="column" fxFlexFill fxLayoutAlign="center">
+    <div fxLayout="column" fxLayout.gt-sm="row" class="colored box"
+         style="cursor: pointer;" fxFlexFill>
+      <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div style="max-height: 200px; max-width: 200px;">
+            <img
+              src="https://cdn-sites-images.46graus.com/files/photos/f5741636/12ca4344-31cd-4b42-b4fa-1ff05397d6f8/drone-256x256.jpg"/>
+          </div>
+          <div><h2 class="text-uppercase">SCVANT</h2></div>
+          <div></div>
+          <!--<div *ngIf="!_ambiente.production">
+            {{chave.value | circularObjectToJson}}
+          </div>-->
+        </div>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="45">
+
+        <form [formGroup]="_formularioLogin" novalidate (ngSubmit)="onSubmit()">
+          <mat-card class="shipping-card" style="height:100%">
+            <mat-card-header>
+              <mat-card-title>
+                {{_enviandoFormulario ? 'Sistema autenticando, aguarde por favor' : 'Informe seus dados para acessar' }}
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content *ngIf="_enviandoFormulario">
+              <div fxLayout="row" fxLayoutAlign="space-around center" style="height:100%" *ngIf="_enviandoFormulario">
+                <mat-spinner strokeWidth="5"></mat-spinner>
+              </div>
+            </mat-card-content>
+            <mat-card-content *ngIf="!_enviandoFormulario">
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="CPF (Somente número)" formControlName="chave"
+                           maxlength="14" mask="000.000.000-99" autocomplete="off">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <mat-error *ngIf="_formularioLogin.controls['chave'].hasError('required')">
+                      CPF <strong>Obrigatório</strong>
+                    </mat-error>
+                    <mat-error *ngIf="_formularioLogin.controls['chave'].hasError('minlength')">
+                      CPF deve conter <strong>11 caracteres</strong>
+                    </mat-error>
+                    <mat-error *ngIf="_formularioLogin.controls['chave'].hasError('CpfErrado')">
+                      CPF inválido <strong>digite um CPF correto</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Senha" type="password" formControlName="senha" autocomplete="off">
+                    <mat-icon matSuffix>lock</mat-icon>
+                    <mat-error *ngIf="_formularioLogin.controls['senha'].hasError('required')">
+                      Senha <strong>Obrigatória</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Token" type="text" formControlName="token" autocomplete="off"
+                           maxlength="6">
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                    <mat-error *ngIf="_formularioLogin.controls['token'].hasError('required')">
+                      Token <strong>Obrigatória</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-raised-button color="primary" type="submit"
+                      [disabled]="_formularioLogin.invalid || _enviandoFormulario">
+                {{_enviandoFormulario ? 'Autenticando' : 'Entrar'}}
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

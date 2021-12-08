@@ -1,0 +1,67 @@
+<div class="spinner-container" *ngIf="dataSource._carregando$ | async">
+  <mat-spinner></mat-spinner>
+</div>
+
+<mat-table mat-table matSort aria-label="Elements"
+           [dataSource]="dataSource">
+  <!-- Id Column -->
+  <ng-container matColumnDef="no_agencia">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+    <td mat-cell *matCellDef="let agencia">{{agencia.no_agencia}}</td>
+  </ng-container>
+
+  <!-- Nome da Coluna -->
+  <ng-container matColumnDef="sgl_agencia">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sigla</th>
+    <td mat-cell *matCellDef="let agencia">{{agencia.sgl_agencia}}</td>
+  </ng-container>
+
+  <!-- Nome da Coluna -->
+  <ng-container matColumnDef="nu_cnpj">
+    <th mat-header-cell *matHeaderCellDef>CNPJ</th>
+    <td mat-cell *matCellDef="let agencia">{{agencia.nu_cnpj}}</td>
+  </ng-container>
+
+  <!-- Nome da Coluna -->
+  <ng-container matColumnDef="nu_telefone">
+    <th mat-header-cell *matHeaderCellDef>Telefone</th>
+    <td mat-cell *matCellDef="let agencia">{{agencia.nu_cnpj}}</td>
+  </ng-container>
+
+  <!-- Nome da Coluna -->
+  <ng-container matColumnDef="dsc_email">
+    <th mat-header-cell *matHeaderCellDef>E-mail</th>
+    <td mat-cell *matCellDef="let agencia">{{agencia.dsc_email}}</td>
+  </ng-container>
+
+  <!-- &lt;!&ndash; Nome da Coluna &ndash;&gt;
+   <ng-container matColumnDef="agencia_esfera">
+     <th mat-header-cell *matHeaderCellDef>Esfera</th>
+     <td mat-cell *matCellDef="let agencia">
+       {{agencia.agencia_esfera.dsc_esfera_agencia}}
+     </td>
+   </ng-container>
+
+   &lt;!&ndash; Nome da Coluna &ndash;&gt;
+   <ng-container matColumnDef="uf">
+     <th mat-header-cell *matHeaderCellDef>UF</th>
+     <td mat-cell *matCellDef="let agencia">
+       {{agencia.cd_uf.dsc_uf}}
+     </td>
+   </ng-container>
+
+   &lt;!&ndash; Nome da Coluna &ndash;&gt;
+   <ng-container matColumnDef="pais">
+     <th mat-header-cell *matHeaderCellDef>UF</th>
+     <td mat-cell *matCellDef="let agencia">
+       {{agencia.pais.no_pais}}
+     </td>
+   </ng-container>-->
+
+  <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+  <tr mat-row *matRowDef="let agencia; columns: colunas;"></tr>
+</mat-table>
+
+<mat-paginator [pageSize]="20"
+               [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+

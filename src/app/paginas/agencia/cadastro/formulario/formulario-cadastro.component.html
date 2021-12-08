@@ -1,0 +1,145 @@
+<!--{{_agenciaFormulario.invalid | circularObjectToJson}}-->
+
+<div class="spinner-container" *ngIf="_enviandoFormulario">
+  <mat-spinner></mat-spinner>
+</div>
+
+<form [formGroup]="_agenciaFormulario" novalidate
+      (ngSubmit)="agenciaEnviar()">
+  <mat-card class="shipping-card mat-elevation-z6" style="width: 95%">
+    <mat-card-header>
+      <mat-card-title>Incluir Aéronave</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex.gt-sm="100" fxFlexOffset.gt-sm="0">
+        <div fxFlex.gt-sm="100" fxFlexOffset.gt-sm="0" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-around">
+          <div fxFlex.gt-sm="100" fxFlexOffset.gt-sm="1" fxFlex="100" fxLayout="column">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Marca da aéronave" formControlName="no_agencia" required>
+                  <mat-error *ngIf="_agenciaFormulario.controls['no_agencia'].hasError('required')">
+                    Nome da agência é <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Sigla da aéronave" formControlName="sgl_agencia" required>
+                <mat-error *ngIf="_agenciaFormulario.controls['sgl_agencia'].hasError('required')">
+                  Sigla da agência é <strong>obrigatório</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Número de serie" formControlName="nu_cnpj" mask="000.000.000-99"/>
+                <mat-error *ngIf="_agenciaFormulario.controls['nu_cnpj'].hasError('minlength')">
+                  CNPJ deve conter <strong>18 caracteres</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="E-mail assistência" formControlName="dsc_email"/>
+                <mat-error *ngIf="_agenciaFormulario.controls['dsc_email'].hasError('pattern')">
+                  Email inválido <strong>digite um email correto</strong>
+                </mat-error>
+                <mat-error *ngIf="_agenciaFormulario.controls['dsc_email'].hasError('required')">
+                  Email é <strong>obrigatório</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Telefone Suporte"
+                       formControlName="nu_telefone"
+                       mask="(00) 0000-0000||(00) 0 0000-0000">
+                <mat-error *ngIf="_agenciaFormulario.controls['nu_telefone'].hasError('minlength')">
+                  Telefone deve conter no <strong> mínimo 10 caracteres</strong>
+                </mat-error>
+                <mat-error *ngIf="_agenciaFormulario.controls['nu_telefone'].hasError('maxlength')">
+                  Telefone deve conter no <strong> maximo 10 caracteres</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col" [formGroup]="esfera">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Esfera da agência"
+                              panelClass="example-long-panel"
+                              formControlName="cd_esfera_agencia"
+                              required>
+                    <mat-optgroup *ngFor="let opcoes of _opcoesEsferaAgencia"
+                                  [label]="opcoes.nome"
+                                  [disabled]="false">
+                      <mat-option *ngFor="let esfera  of opcoes.esferas"
+                                  [value]="esfera.cd_esfera_agencia"
+                                  (onSelectionChange)="selecionarEsfera(esfera)">
+                        {{esfera.dsc_esfera_agencia}}
+                      </mat-option>
+                    </mat-optgroup>
+                  </mat-select>
+                  <mat-error *ngIf="_agenciaFormulario.controls['agencia_esfera'].hasError('required')">
+                    Esfera da agência <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col" [formGroup]="uf">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="UF" formControlName="cd_uf">
+                    <mat-option *ngFor="let unidade of _unidadesFederativa" [value]="unidade.id"
+                                (onSelectionChange)="selecionarUf(unidade)">
+                      {{ unidade.nome }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="_agenciaFormulario.controls['uf'].hasError('required')">
+                    UF é <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col" [formGroup]="pais">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="País" panelClass="example-long-panel" formControlName="cd_pais" required>
+                    <mat-option *ngFor="let pais of _paises" [value]="pais.cd_pais"
+                                (onSelectionChange)="selecionarPais(pais)">
+                      {{ pais.no_pais }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="_agenciaFormulario.controls['pais'].hasError('required')">
+                    País é <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="95" fxFlexOffset.gt-sm="0" fxLayout.gt-sm="row">
+          <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Outras informações"
+                            formControlName="dsc_informacao"
+                            rows="6">
+
+                  </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="_enviandoFormulario"
+              (click)="voltar()">
+        Voltar
+      </button>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="_agenciaFormulario.invalid || _enviandoFormulario">
+        {{_enviandoFormulario ? 'Cadastrando ' : 'Salvar'}}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

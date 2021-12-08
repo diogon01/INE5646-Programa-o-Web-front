@@ -1,0 +1,82 @@
+<!--{{_patenteFormulario.invalid | circularObjectToJson}}-->
+
+<div class="spinner-container" *ngIf="_enviandoFormulario">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div fxLayout.gt-sm="row"
+     fxLayoutAlign.gt-sm="center" style="padding-top: 50px">
+  <div fxFlex.gt-sm="95" fxFlexOffset.gt-sm="0">
+    <form [formGroup]="_patenteFormulario" novalidate
+          (ngSubmit)="patenteEnviar()">
+      <mat-card class="shipping-card mat-elevation-z6">
+        <mat-card-header>
+          <mat-card-title>{{titulo}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div fxFlex.gt-sm="45" fxFlexOffset.gt-sm="1">
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Nome da patente" formControlName="no_patente" required>
+                  <mat-error *ngIf="_patenteFormulario.controls['no_patente'].hasError('required')">
+                    Nome da patente <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Sigla da agência" formControlName="sgl_patente" required>
+                  <mat-error *ngIf="_patenteFormulario.controls['sgl_patente'].hasError('required')">
+                    Sigla da agência é <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col" [formGroup]="_agencia">
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Agencia" formControlName="cd_agencia">
+                    <mat-option *ngFor="let agencia of _agencias" [value]="agencia.cd_agencia"
+                                (onSelectionChange)="selecionarAgencia(agencia)">
+                      {{ agencia.no_agencia }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="_patenteFormulario.controls['agencia'].hasError('required')">
+                    Agência <strong>obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <mat-form-field class="full-width">
+              <ngx-mat-file-input [formControl]="_patenteFormularioImagem"
+                                  [multiple]="false" accept=".png, .jpg, .jpeg"
+                                  (change)="carregarImagem($event)" placeholder="Anexar imagem">
+              </ngx-mat-file-input>
+            </mat-form-field>
+          </div>
+          <div fxFlex.gt-sm="45" fxFlexOffset.gt-sm="1" fxLayoutAlign.gt-sm="center">
+
+            <div fxLayout="row">
+              <img src="https://picsum.photos/536/354">
+            </div>
+
+          </div>
+
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="primary" type="submit"
+                  [disabled]="_enviandoFormulario"
+                  (click)="voltar()">
+            Voltar
+          </button>
+          <button mat-raised-button color="primary" type="submit"
+                  [disabled]="_patenteFormulario.invalid || _enviandoFormulario">
+            {{_enviandoFormulario ? 'Cadastrando ' : 'Salvar'}}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
