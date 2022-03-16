@@ -38,17 +38,10 @@
               <div class="row">
                 <div class="col">
                   <mat-form-field class="full-width">
-                    <input matInput placeholder="CPF (Somente número)" formControlName="chave"
-                           maxlength="14" mask="000.000.000-99" autocomplete="off">
+                    <input matInput placeholder="email" formControlName="email">
                     <mat-icon matSuffix>account_circle</mat-icon>
-                    <mat-error *ngIf="_formularioLogin.controls['chave'].hasError('required')">
-                      CPF <strong>Obrigatório</strong>
-                    </mat-error>
-                    <mat-error *ngIf="_formularioLogin.controls['chave'].hasError('minlength')">
-                      CPF deve conter <strong>11 caracteres</strong>
-                    </mat-error>
-                    <mat-error *ngIf="_formularioLogin.controls['chave'].hasError('CpfErrado')">
-                      CPF inválido <strong>digite um CPF correto</strong>
+                    <mat-error *ngIf="_formularioLogin.controls['email'].hasError('required')">
+                      Email <strong>Obrigatório</strong>
                     </mat-error>
                   </mat-form-field>
                 </div>
@@ -56,22 +49,10 @@
               <div class="row">
                 <div class="col">
                   <mat-form-field class="full-width">
-                    <input matInput placeholder="Senha" type="password" formControlName="senha" autocomplete="off">
+                    <input matInput placeholder="Password" type="password" formControlName="password" autocomplete="off">
                     <mat-icon matSuffix>lock</mat-icon>
-                    <mat-error *ngIf="_formularioLogin.controls['senha'].hasError('required')">
+                    <mat-error *ngIf="_formularioLogin.controls['password'].hasError('required')">
                       Senha <strong>Obrigatória</strong>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <mat-form-field class="full-width">
-                    <input matInput placeholder="Token" type="text" formControlName="token" autocomplete="off"
-                           maxlength="6">
-                    <mat-icon matSuffix>vpn_key</mat-icon>
-                    <mat-error *ngIf="_formularioLogin.controls['token'].hasError('required')">
-                      Token <strong>Obrigatória</strong>
                     </mat-error>
                   </mat-form-field>
                 </div>

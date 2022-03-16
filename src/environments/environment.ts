@@ -15,7 +15,7 @@ export const environment = {
     dataUpdate: require('../../package.json').dataUpdate,
     hourUpdate: require('../../package.json').hourUpdate,
     author: require('../../package.json').author,
-    url: 'http://localhost:8180/api',
+    url: 'http://127.0.0.1:3333',
   },
   motor_consulta: {}
 };

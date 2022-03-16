@@ -1,0 +1,64 @@
+<form [formGroup]="_aeronaveFormulario" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>{{titulo}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Modelo" formControlName="model">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Peso da aeronave" formControlName="weight">
+            <mat-error *ngIf="_aeronaveFormulario.controls['weight'].hasError('required')">
+              Peso é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput formControlName="max_payload" type="number"
+                   placeholder="Payload maximo" step="0.01" pattern="^\d*(\.\d{0,2})?$">
+            <mat-error *ngIf="_aeronaveFormulario.controls['max_payload'].hasError('required')">
+              Payload maximo é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Modelo do motor" formControlName="motor_model">
+            <mat-error *ngIf="_aeronaveFormulario.controls['motor_model'].hasError('required')">
+              Modelo do motor é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Proteção para chuva" formControlName="ip_rating">
+            <mat-error *ngIf="_aeronaveFormulario.controls['ip_rating'].hasError('required')">
+              Proteção IP <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tempo de vôo maximo" formControlName="max_flight_time">
+            <mat-error *ngIf="_aeronaveFormulario.controls['max_flight_time'].hasError('required')">
+              Tempo de vôo maximo <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

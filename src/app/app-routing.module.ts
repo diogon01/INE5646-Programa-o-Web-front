@@ -42,6 +42,14 @@ const routes: Routes = [
         path: 'patente',
         loadChildren: () => import('./paginas/patente/patente.module').then(m => m.PatenteModule)
       },
+      {
+        path: 'usuario',
+        loadChildren: () => import('./paginas/usuario/usuario.module').then(m => m.UsuarioModule)
+      },
+      {
+        path: 'aeronave',
+        loadChildren: () => import('./paginas/aeronave/aeronave.module').then(m => m.AeronaveModule)
+      },
     ],
 
   },
