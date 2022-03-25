@@ -32,7 +32,7 @@ export class AutenticadorServico {
   }
 
   iniciarSessao<T>(credencial: FormGroup): Observable<any> {
-    return this.http.post<RespostaLogin>(`${this.url}/auth/login`,
+    return this.http.post<RespostaLogin>(`${this.url}/login`,
       credencial.value, httpPropriedades)
       .pipe(
         catchError(this.handleError<FormGroup>(`Erro login`))

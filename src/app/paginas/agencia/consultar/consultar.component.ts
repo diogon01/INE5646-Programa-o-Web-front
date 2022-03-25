@@ -74,25 +74,6 @@ export class ConsultarComponent implements AfterViewInit, OnInit {
 
   }
 
-  /**
-   * @description Seleciona todas as linhas se nem todas estiverem selection;
-   *  caso contrário, limpar a seleção.
-   */
-  trocarSelecionados(): void {
-    if (this.todosSelecionados()) {
-      this._selecao.clear();
-      return;
-    }
-    this._selecao.select(...this._agenciaDataSource._agencias.value);
-  }
-
-  /** Label do checkbox de seleção na linha selecionada */
-  checkboxLabel(linha?: IAgencia): string {
-    if (!linha) {
-      return `${this.todosSelecionados() ? 'deselect' : 'select'} all`;
-    }
-    return `${this._selecao.isSelected(linha) ? 'deselect' : 'select'} row ${linha.cd_agencia + 1}`;
-  }
 
   ngOnInit(): void {
     this._agenciaDataSource.agenciasCarregar(0);

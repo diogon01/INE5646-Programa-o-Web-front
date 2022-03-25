@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AeronaveComponent} from "./aeronave.component";
 import {CadastroComponent} from "./cadastro/cadastro.component";
+import {AeronaveListarComponent} from "./listar/aeronave-listar.component";
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'cadastrar',
+        redirectTo: 'listar',
         pathMatch: 'full'
       },
       {
@@ -27,6 +28,13 @@ const routes: Routes = [
           titulo: 'Editar Aeronave'
         }
       },
+      {
+        path: 'listar',
+        component: AeronaveListarComponent,
+        data: {
+          titulo: 'Listar'
+        }
+      },
     ]
   }
 
@@ -36,4 +44,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AeronaveRoutingModule { }
+export class AeronaveRoutingModule {
+}

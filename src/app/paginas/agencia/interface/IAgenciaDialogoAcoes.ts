@@ -1,6 +1,6 @@
 import {IDialogoAcoes} from "../../../compartilhado/interface/IDialogoAcoes";
-import {IAgencia} from "./IAgencia";
+import {IAeronave} from "../../aeronave/interface/IAeronave";
 
 export interface IAgenciaDialogoAcoes extends IDialogoAcoes {
-  agencia: IAgencia
+  aeronave: IAeronave
 }

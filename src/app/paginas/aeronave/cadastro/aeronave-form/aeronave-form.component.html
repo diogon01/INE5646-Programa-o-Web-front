@@ -33,9 +33,13 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Modelo do motor" formControlName="motor_model">
-            <mat-error *ngIf="_aeronaveFormulario.controls['motor_model'].hasError('required')">
-              Modelo do motor é <strong>obrigatório</strong>
+            <mat-select placeholder="Bateria" formControlName="charger_id">
+              <mat-option *ngFor="let unidade of _baterias" [value]="unidade.id">
+                {{ unidade.model }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="_aeronaveFormulario.controls['charger_id'].hasError('required')">
+              Bateria <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
         </div>

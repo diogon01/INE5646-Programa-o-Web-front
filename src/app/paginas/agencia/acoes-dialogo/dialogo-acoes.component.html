@@ -3,11 +3,11 @@
 </mat-card-subtitle>-->
 <div *ngIf="excluir">
   <h2 mat-dialog-title>
-    {{'Excluir Agencia: ' + data.agencia.sgl_agencia}}
+    {{'Excluir Aeronave: ' + data.aeronave.model}}
   </h2>
   <mat-divider></mat-divider>
   <mat-dialog-content>
-    <p>Você tem ceteza que deseja excluir a agência: {{data.agencia.no_agencia}}?</p>
+    <p>Você tem ceteza que deseja excluir a aeronave: {{data.aeronave.id}}?</p>
     <p>Uma vez excluido, os dados poderão não ser recuperados</p>
   </mat-dialog-content>
   <mat-divider></mat-divider>
@@ -27,7 +27,7 @@
   </mat-dialog-actions>
 </div>
 
-<div *ngIf="visualizar">
+<!--<div *ngIf="visualizar">
   <h2 mat-dialog-title>Visualizar Agência: {{data.agencia.no_agencia}}</h2>
   <mat-divider></mat-divider>
   <mat-dialog-content class="mat-typography">
@@ -71,7 +71,7 @@
   </mat-dialog-actions>
 
 
-</div>
+</div>-->
 
 
 <!--<h2 mat-dialog-title>Visualizar Agência: {{data.agencia.no_agencia}}</h2>

@@ -23,6 +23,8 @@ import {DialogoAcoesComponent} from '../paginas/agencia/acoes-dialogo/dialogo-ac
 import {MatDividerModule} from "@angular/material/divider";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {RouterModule} from "@angular/router";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -65,6 +67,8 @@ import {RouterModule} from "@angular/router";
     MatSpinner,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,

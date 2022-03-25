@@ -12,13 +12,15 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { AeronaveListarComponent } from './listar/aeronave-listar.component';
 
 
 @NgModule({
   declarations: [
     AeronaveComponent,
     AeronaveFormComponent,
-    CadastroComponent
+    CadastroComponent,
+    AeronaveListarComponent
   ],
   imports: [
     CommonModule,
